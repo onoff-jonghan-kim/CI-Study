@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  jong_ci:
+    build: ./
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "127.0.0.10:80:80"
+  jong_db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: a1111?
+      MYSQL_DATABASE: jong_db
+      MYSQL_USER: jong
+      MYSQL_PASSWORD: a1111?
+    ports:
+      - "127.0.0.10:3306:3306"
+volumes:
+    db_data:
